@@ -67,6 +67,7 @@ Memory-Constrained LLM Inference}
   Anurita Das \\
   Genovation Technological Solutions Pvt Ltd \\
   \texttt{anurita@genovationsolutions.com} \\
+  \texttt{\url{https://github.com/genovationtech/nve}} \\
 }
 
 \begin{document}
@@ -2916,6 +2917,52 @@ concentrated empirical distributions like the per-layer norm statistics we obser
 
 \section{Reproducibility}
 \label{app:reproducibility}
+
+\paragraph{Code and data availability.}
+The full source tree, calibration prompts, captured run logs, and paper
+source are released under the MIT License at
+\url{https://github.com/genovationtech/nve}. The layout relevant to the
+claims in this paper is:
+
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+\item \texttt{src/profiler.rs} --- MCAP profiler
+  (Section~\ref{sec:mcap}): 12-prompt calibration, per-layer
+  activation variance, importance scoring, 338-byte JSON profile emission.
+\item \texttt{src/importance\_cache.rs} --- architecture-keyed profile
+  cache referenced in Section~\ref{sec:system}.
+\item \texttt{src/quantize.rs}, \texttt{src/cuda\_kernels.rs} ---
+  W4A8 / W4A16 dispatch and CUDA kernels
+  (Section~\ref{sec:w4a8_kernel}).
+\item \texttt{src/decode\_graph.rs} --- CUDA graph-captured decode path
+  (Section~\ref{sec:w4a8_kernel}, \S CUDA graph capture).
+\item \texttt{src/pager.rs}, \texttt{src/tier.rs},
+  \texttt{src/paged\_model.rs} --- three-tier (GPU / RAM / SSD) weight
+  pager (Section~\ref{sec:paging}).
+\item \texttt{src/arch.rs}, \texttt{src/generic\_model.rs} --- generic
+  transformer front-end covering the eight evaluated architectures
+  (GPT-2 through Qwen2-7.6B).
+\item \texttt{src/cli/} --- \texttt{nve} binary entry point
+  (profile / run / bench subcommands).
+\item \texttt{benchmarks/}, \texttt{src/benchmark.rs},
+  \texttt{src/abc\_benchmark.rs} --- throughput, PPL, HellaSwag, and
+  8-task harness used for Sections~\ref{sec:throughput}
+  and~\ref{sec:quality}.
+\item \texttt{evidence/} --- dated capture directories
+  (\texttt{2026-04-12} through \texttt{2026-04-18}) holding the Modal
+  runner scripts and raw JSON logs for every figure and table,
+  including the cross-silicon profile hash and threshold ablation.
+\item \texttt{tests/}, \texttt{examples/} --- integration tests and
+  minimal runnable examples (\texttt{examples/test\_real\_model.py},
+  \texttt{examples/test\_tiered\_serving.py}).
+\item \texttt{docs/} --- architecture notes, quantization details, and
+  the streaming profiler design referenced in the main text.
+\item \texttt{paper/mcap.tex} --- source of this document; the
+  \texttt{figures/} subtree holds every plot included here.
+\end{itemize}
+
+Hugging Face access tokens in benchmark scripts are read from the
+\texttt{HF\_TOKEN} environment variable; no credentials are committed to
+the repository.
 
 \begin{itemize}[leftmargin=*, itemsep=2pt]
 \item \textbf{Hardware}: GPU experiments on Modal cloud (NVIDIA T4 sm\_75 /
