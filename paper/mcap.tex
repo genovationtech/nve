@@ -1,7 +1,7 @@
 \documentclass{article}
 
 % NeurIPS 2025 style
-\usepackage[final]{neurips_2025}
+\usepackage[final]{mcap_style}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -211,7 +211,7 @@ HellaSwag at the evaluated sample sizes.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-16/figures_paper/fig1_layer_importance_6panel.png}
+  \includegraphics[width=\linewidth]{figures/fig1_layer_importance_6panel.png}
   \caption{\textbf{MCAP importance scores across model scales through 8B.}
   Per-layer importance scores for GPT-2 (0.1B), Qwen2.5 (0.5B), Llama-3.2-1B,
   Llama-3.2-3B, Llama-3.1-8B, and Qwen2-7.6B. The dominant outlier layer is usually near
@@ -851,7 +851,7 @@ load time.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-16/figures_paper/fig9_profiling_overhead.png}
+  \includegraphics[width=\linewidth]{figures/fig9_profiling_overhead.png}
   \caption{\textbf{MCAP streaming profiler memory advantage.} Peak memory comparison
   between full-model loading and MCAP's streaming approach. At 3B, the streaming profiler
   uses 29.6$\times$ less peak memory (203\,MB vs.\ 6,000\,MB), enabling profiling on
@@ -1997,7 +1997,7 @@ Llama-3.1-8B & 8\,GB & 16 / 32 & 50\% & 12\% \\
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-18/figures_paper/fig7_pareto_memory_quality.png}
+  \includegraphics[width=\linewidth]{figures/fig7_pareto_memory_quality.png}
   \caption{\textbf{Paging runs Llama-3.2-1B (unconstrained resident $\sim$3.6\,GB) at a 2\,GB GPU budget, quality intact.}
   Llama-3.2-1B decode throughput as the GPU VRAM budget is swept from 2\,GB to 14\,GB,
   on T4 and A10G. Hot-only paging (no quantization) matches Hot+Quant throughput at
@@ -2168,7 +2168,7 @@ specific choice.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-16/figures_paper/fig3_scorer_comparison.png}
+  \includegraphics[width=\linewidth]{figures/fig3_scorer_comparison.png}
   \caption{\textbf{Scorer signal analysis.} FFN-only dominates at small scale
   (GPT-2: $\tau = 0.97$); Attention-proxy dominates at large scale
   (Llama-3B: $\tau = 0.82$). The combined proxy covers both regimes.}
@@ -2215,7 +2215,7 @@ operates inside the regime where precision noise is well-tolerated.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-16/figures_paper/fig4_layer_sweep_quality_cliff.png}
+  \includegraphics[width=\linewidth]{figures/fig4_layer_sweep_quality_cliff.png}
   \caption{\textbf{Layer sweep quality cliff (Llama-3.2-1B).} A sharp cliff at $<$75\%
   active layers: accuracy drops from 75\% to 0--38\%. Below 50\%, output is incoherent.}
   \label{fig:layer_sweep}
@@ -2223,7 +2223,7 @@ operates inside the regime where precision noise is well-tolerated.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-18/figures_paper/fig5_bpw_sweep.png}
+  \includegraphics[width=\linewidth]{figures/fig5_bpw_sweep.png}
   \caption{\textbf{Bits-per-weight sweep (Llama-3.2-1B).} Quality preserved at
   $\geq$3.0 bpw; below 2.0 bpw, compression is too aggressive for 16 layers.}
   \label{fig:bpw_sweep}
@@ -2747,7 +2747,7 @@ MCAP Mixed achieves nearly identical throughput to uniform W4A8, only one layer 
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-18/figures_paper/fig8_bit_allocation.png}
+  \includegraphics[width=\linewidth]{figures/fig8_bit_allocation.png}
   \caption{\textbf{Per-layer bit allocation driven by MCAP scores.} Nearly all layers
   receive W4A8 dispatch; only the final-layer outlier is preserved at W4A16 precision.}
   \label{fig:bit_allocation}
@@ -2766,7 +2766,7 @@ $\geq$3B parameters.
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-16/figures_paper/fig2_abc_quality_throughput.png}
+  \includegraphics[width=\linewidth]{figures/fig2_abc_quality_throughput.png}
   \caption{\textbf{ABC framework: quality vs.\ throughput across models.} NVE W4A8
   configurations dominate the quality--throughput frontier across the saved model sweep,
   now including larger Llama operating points through 8B. The throughput gap widens with
@@ -2787,7 +2787,7 @@ access to tight 3B/8B memory regimes in which baseline systems do not run.
 
 \begin{figure}[p]
   \centering
-  \includegraphics[width=\linewidth]{../evidence/2026-04-18/figures_paper/fig11_rigorous_comparison.png}
+  \includegraphics[width=\linewidth]{figures/fig11_rigorous_comparison.png}
   \caption{\textbf{Full system comparison: NVE vs.\ llama.cpp vs.\ HuggingFace.}
   Multi-panel comparison of task accuracy across saved model/budget scenarios, including
   8B unconstrained, 4\,GB, and 8\,GB settings. Hatched entries indicate OOM or unavailable
