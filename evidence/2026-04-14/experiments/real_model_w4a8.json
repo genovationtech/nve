@@ -1,0 +1,630 @@
+{
+  "nve": {
+    "llama1b": {
+      "model": "llama1b",
+      "label": "Llama-3.2-1B",
+      "w4a8": {
+        "accuracy": 0.875,
+        "avg_tps": 1.9213890203316741,
+        "tasks": [
+          {
+            "prompt": "The capital of France is",
+            "expected": "paris",
+            "generated": "Prompt: The capital of France is\nTokens: 24 chars, 6 tokens\n\nThe capital of France is Paris. It is the largest city in t",
+            "passed": true,
+            "tps": 1.6868390154838608,
+            "rc": 0
+          },
+          {
+            "prompt": "Water is composed of hydrogen and",
+            "expected": "oxygen",
+            "generated": "Prompt: Water is composed of hydrogen and\nTokens: 33 chars, 7 tokens\n\nWater is composed of hydrogen and oxygen atoms. Th",
+            "passed": true,
+            "tps": 2.0672521690496892,
+            "rc": 0
+          },
+          {
+            "prompt": "The largest planet in the solar system i",
+            "expected": "jupiter",
+            "generated": "Prompt: The largest planet in the solar system is\nTokens: 41 chars, 9 tokens\n\nThe largest planet in the solar system is ",
+            "passed": false,
+            "tps": 2.102802888487268,
+            "rc": 0
+          },
+          {
+            "prompt": "If today is Monday, tomorrow is",
+            "expected": "tuesday",
+            "generated": "Prompt: If today is Monday, tomorrow is\nTokens: 31 chars, 8 tokens\n\nIf today is Monday, tomorrow is Tuesday, and the day",
+            "passed": true,
+            "tps": 2.1701653972778945,
+            "rc": 0
+          },
+          {
+            "prompt": "A square has four equal sides. A shape w",
+            "expected": "square",
+            "generated": "Prompt: A square has four equal sides. A shape with four equal sides and four right angles is a\nTokens: 87 chars, 20 tok",
+            "passed": true,
+            "tps": 1.9074916546182743,
+            "rc": 0
+          },
+          {
+            "prompt": "def add(a, b):\n    return a",
+            "expected": "+",
+            "generated": "Prompt: def add(a, b):\n    return a\nTokens: 27 chars, 10 tokens\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n  ",
+            "passed": true,
+            "tps": 1.953632605376523,
+            "rc": 0
+          },
+          {
+            "prompt": "# Python: list of squares 0-4\nsquares = ",
+            "expected": "range",
+            "generated": "Prompt: # Python: list of squares 0-4\nsquares = [x**2 for x in\nTokens: 54 chars, 22 tokens\n\n# Python: list of squares 0-",
+            "passed": true,
+            "tps": 1.6369338891141971,
+            "rc": 0
+          },
+          {
+            "prompt": "The main benefit of regular exercise is ",
+            "expected": "health",
+            "generated": "Prompt: The main benefit of regular exercise is improved\nTokens: 48 chars, 9 tokens\n\nThe main benefit of regular exercis",
+            "passed": true,
+            "tps": 1.8459945432456861,
+            "rc": 0
+          }
+        ]
+      },
+      "w4a16": {
+        "accuracy": 0.875,
+        "avg_tps": 1.774800985103135,
+        "tasks": [
+          {
+            "prompt": "The capital of France is",
+            "expected": "paris",
+            "generated": "Prompt: The capital of France is\nTokens: 24 chars, 6 tokens\n\nThe capital of France is Paris. It is the largest city in t",
+            "passed": true,
+            "tps": 1.9011936854121474,
+            "rc": 0
+          },
+          {
+            "prompt": "Water is composed of hydrogen and",
+            "expected": "oxygen",
+            "generated": "Prompt: Water is composed of hydrogen and\nTokens: 33 chars, 7 tokens\n\nWater is composed of hydrogen and oxygen atoms. Th",
+            "passed": true,
+            "tps": 1.8630187902519921,
+            "rc": 0
+          },
+          {
+            "prompt": "The largest planet in the solar system i",
+            "expected": "jupiter",
+            "generated": "Prompt: The largest planet in the solar system is\nTokens: 41 chars, 9 tokens\n\nThe largest planet in the solar system is ",
+            "passed": false,
+            "tps": 1.8378158322580473,
+            "rc": 0
+          },
+          {
+            "prompt": "If today is Monday, tomorrow is",
+            "expected": "tuesday",
+            "generated": "Prompt: If today is Monday, tomorrow is\nTokens: 31 chars, 8 tokens\n\nIf today is Monday, tomorrow is Tuesday, and the day",
+            "passed": true,
+            "tps": 1.8625508874113086,
+            "rc": 0
+          },
+          {
+            "prompt": "A square has four equal sides. A shape w",
+            "expected": "square",
+            "generated": "Prompt: A square has four equal sides. A shape with four equal sides and four right angles is a\nTokens: 87 chars, 20 tok",
+            "passed": true,
+            "tps": 1.668289906331655,
+            "rc": 0
+          },
+          {
+            "prompt": "def add(a, b):\n    return a",
+            "expected": "+",
+            "generated": "Prompt: def add(a, b):\n    return a\nTokens: 27 chars, 10 tokens\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n  ",
+            "passed": true,
+            "tps": 1.7611523719190163,
+            "rc": 0
+          },
+          {
+            "prompt": "# Python: list of squares 0-4\nsquares = ",
+            "expected": "range",
+            "generated": "Prompt: # Python: list of squares 0-4\nsquares = [x**2 for x in\nTokens: 54 chars, 22 tokens\n\n# Python: list of squares 0-",
+            "passed": true,
+            "tps": 1.5564546536527568,
+            "rc": 0
+          },
+          {
+            "prompt": "The main benefit of regular exercise is ",
+            "expected": "health",
+            "generated": "Prompt: The main benefit of regular exercise is improved\nTokens: 48 chars, 9 tokens\n\nThe main benefit of regular exercis",
+            "passed": true,
+            "tps": 1.7479317535881576,
+            "rc": 0
+          }
+        ]
+      }
+    },
+    "llama3b": {
+      "model": "llama3b",
+      "label": "Llama-3.2-3B",
+      "w4a8": {
+        "accuracy": 1.0,
+        "avg_tps": 0.7585237884315306,
+        "tasks": [
+          {
+            "prompt": "The capital of France is",
+            "expected": "paris",
+            "generated": "Prompt: The capital of France is\nTokens: 24 chars, 6 tokens\n\nThe capital of France is Paris. It is the largest city in F",
+            "passed": true,
+            "tps": 0.6642999804672108,
+            "rc": 0
+          },
+          {
+            "prompt": "Water is composed of hydrogen and",
+            "expected": "oxygen",
+            "generated": "Prompt: Water is composed of hydrogen and\nTokens: 33 chars, 7 tokens\n\nWater is composed of hydrogen and oxygen. The rati",
+            "passed": true,
+            "tps": 0.7905941570580343,
+            "rc": 0
+          },
+          {
+            "prompt": "The largest planet in the solar system i",
+            "expected": "jupiter",
+            "generated": "Prompt: The largest planet in the solar system is\nTokens: 41 chars, 9 tokens\n\nThe largest planet in the solar system is ",
+            "passed": true,
+            "tps": 0.7878181192040387,
+            "rc": 0
+          },
+          {
+            "prompt": "If today is Monday, tomorrow is",
+            "expected": "tuesday",
+            "generated": "Prompt: If today is Monday, tomorrow is\nTokens: 31 chars, 8 tokens\n\nIf today is Monday, tomorrow is Tuesday, and so on, ",
+            "passed": true,
+            "tps": 0.8083435436162578,
+            "rc": 0
+          },
+          {
+            "prompt": "A square has four equal sides. A shape w",
+            "expected": "square",
+            "generated": "Prompt: A square has four equal sides. A shape with four equal sides and four right angles is a\nTokens: 87 chars, 20 tok",
+            "passed": true,
+            "tps": 0.6950533597695742,
+            "rc": 0
+          },
+          {
+            "prompt": "def add(a, b):\n    return a",
+            "expected": "+",
+            "generated": "Prompt: def add(a, b):\n    return a\nTokens: 27 chars, 10 tokens\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n  ",
+            "passed": true,
+            "tps": 0.8035919142939568,
+            "rc": 0
+          },
+          {
+            "prompt": "# Python: list of squares 0-4\nsquares = ",
+            "expected": "range",
+            "generated": "Prompt: # Python: list of squares 0-4\nsquares = [x**2 for x in\nTokens: 54 chars, 22 tokens\n\n# Python: list of squares 0-",
+            "passed": true,
+            "tps": 0.6989418938344387,
+            "rc": 0
+          },
+          {
+            "prompt": "The main benefit of regular exercise is ",
+            "expected": "health",
+            "generated": "Prompt: The main benefit of regular exercise is improved\nTokens: 48 chars, 9 tokens\n\nThe main benefit of regular exercis",
+            "passed": true,
+            "tps": 0.8195473392087336,
+            "rc": 0
+          }
+        ]
+      },
+      "w4a16": {
+        "accuracy": 1.0,
+        "avg_tps": 0.7825058521377793,
+        "tasks": [
+          {
+            "prompt": "The capital of France is",
+            "expected": "paris",
+            "generated": "Prompt: The capital of France is\nTokens: 24 chars, 6 tokens\n\nThe capital of France is Paris. It is the largest city in F",
+            "passed": true,
+            "tps": 0.8376942061062214,
+            "rc": 0
+          },
+          {
+            "prompt": "Water is composed of hydrogen and",
+            "expected": "oxygen",
+            "generated": "Prompt: Water is composed of hydrogen and\nTokens: 33 chars, 7 tokens\n\nWater is composed of hydrogen and oxygen. The rati",
+            "passed": true,
+            "tps": 0.8355180843138198,
+            "rc": 0
+          },
+          {
+            "prompt": "The largest planet in the solar system i",
+            "expected": "jupiter",
+            "generated": "Prompt: The largest planet in the solar system is\nTokens: 41 chars, 9 tokens\n\nThe largest planet in the solar system is ",
+            "passed": true,
+            "tps": 0.8182481752074015,
+            "rc": 0
+          },
+          {
+            "prompt": "If today is Monday, tomorrow is",
+            "expected": "tuesday",
+            "generated": "Prompt: If today is Monday, tomorrow is\nTokens: 31 chars, 8 tokens\n\nIf today is Monday, tomorrow is Tuesday, and so on, ",
+            "passed": true,
+            "tps": 0.8203990444491291,
+            "rc": 0
+          },
+          {
+            "prompt": "A square has four equal sides. A shape w",
+            "expected": "square",
+            "generated": "Prompt: A square has four equal sides. A shape with four equal sides and four right angles is a\nTokens: 87 chars, 20 tok",
+            "passed": true,
+            "tps": 0.6844130422325303,
+            "rc": 0
+          },
+          {
+            "prompt": "def add(a, b):\n    return a",
+            "expected": "+",
+            "generated": "Prompt: def add(a, b):\n    return a\nTokens: 27 chars, 10 tokens\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n  ",
+            "passed": true,
+            "tps": 0.7757824596193366,
+            "rc": 0
+          },
+          {
+            "prompt": "# Python: list of squares 0-4\nsquares = ",
+            "expected": "range",
+            "generated": "Prompt: # Python: list of squares 0-4\nsquares = [x**2 for x in\nTokens: 54 chars, 22 tokens\n\n# Python: list of squares 0-",
+            "passed": true,
+            "tps": 0.6892660327420773,
+            "rc": 0
+          },
+          {
+            "prompt": "The main benefit of regular exercise is ",
+            "expected": "health",
+            "generated": "Prompt: The main benefit of regular exercise is improved\nTokens: 48 chars, 9 tokens\n\nThe main benefit of regular exercis",
+            "passed": true,
+            "tps": 0.7987257724317176,
+            "rc": 0
+          }
+        ]
+      }
+    },
+    "llama8b": {
+      "model": "llama8b",
+      "label": "Llama-3.1-8B",
+      "w4a8": {
+        "accuracy": 1.0,
+        "avg_tps": 0.3137492622516688,
+        "tasks": [
+          {
+            "prompt": "The capital of France is",
+            "expected": "paris",
+            "generated": "Prompt: The capital of France is\nTokens: 24 chars, 6 tokens\n\nThe capital of France is a city of many faces. It is a city",
+            "passed": true,
+            "tps": 0.3139028822020555,
+            "rc": 0
+          },
+          {
+            "prompt": "Water is composed of hydrogen and",
+            "expected": "oxygen",
+            "generated": "Prompt: Water is composed of hydrogen and\nTokens: 33 chars, 7 tokens\n\nWater is composed of hydrogen and oxygen. The rati",
+            "passed": true,
+            "tps": 0.3218712350835889,
+            "rc": 0
+          },
+          {
+            "prompt": "The largest planet in the solar system i",
+            "expected": "jupiter",
+            "generated": "Prompt: The largest planet in the solar system is\nTokens: 41 chars, 9 tokens\n\nThe largest planet in the solar system is ",
+            "passed": true,
+            "tps": 0.32510403185391734,
+            "rc": 0
+          },
+          {
+            "prompt": "If today is Monday, tomorrow is",
+            "expected": "tuesday",
+            "generated": "Prompt: If today is Monday, tomorrow is\nTokens: 31 chars, 8 tokens\n\nIf today is Monday, tomorrow is Tuesday, and Wednesd",
+            "passed": true,
+            "tps": 0.33407952161113424,
+            "rc": 0
+          },
+          {
+            "prompt": "A square has four equal sides. A shape w",
+            "expected": "square",
+            "generated": "Prompt: A square has four equal sides. A shape with four equal sides and four right angles is a\nTokens: 87 chars, 20 tok",
+            "passed": true,
+            "tps": 0.2900839114790731,
+            "rc": 0
+          },
+          {
+            "prompt": "def add(a, b):\n    return a",
+            "expected": "+",
+            "generated": "Prompt: def add(a, b):\n    return a\nTokens: 27 chars, 10 tokens\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n  ",
+            "passed": true,
+            "tps": 0.32012067170874114,
+            "rc": 0
+          },
+          {
+            "prompt": "# Python: list of squares 0-4\nsquares = ",
+            "expected": "range",
+            "generated": "Prompt: # Python: list of squares 0-4\nsquares = [x**2 for x in\nTokens: 54 chars, 22 tokens\n\n# Python: list of squares 0-",
+            "passed": true,
+            "tps": 0.2889217847496457,
+            "rc": 0
+          },
+          {
+            "prompt": "The main benefit of regular exercise is ",
+            "expected": "health",
+            "generated": "Prompt: The main benefit of regular exercise is improved\nTokens: 48 chars, 9 tokens\n\nThe main benefit of regular exercis",
+            "passed": true,
+            "tps": 0.31591005932519456,
+            "rc": 0
+          }
+        ]
+      },
+      "w4a16": {
+        "accuracy": 1.0,
+        "avg_tps": 0.3201147743041574,
+        "tasks": [
+          {
+            "prompt": "The capital of France is",
+            "expected": "paris",
+            "generated": "Prompt: The capital of France is\nTokens: 24 chars, 6 tokens\n\nThe capital of France is a city of many faces. It is a city",
+            "passed": true,
+            "tps": 0.3422341788886488,
+            "rc": 0
+          },
+          {
+            "prompt": "Water is composed of hydrogen and",
+            "expected": "oxygen",
+            "generated": "Prompt: Water is composed of hydrogen and\nTokens: 33 chars, 7 tokens\n\nWater is composed of hydrogen and oxygen. The rati",
+            "passed": true,
+            "tps": 0.33321907133598566,
+            "rc": 0
+          },
+          {
+            "prompt": "The largest planet in the solar system i",
+            "expected": "jupiter",
+            "generated": "Prompt: The largest planet in the solar system is\nTokens: 41 chars, 9 tokens\n\nThe largest planet in the solar system is ",
+            "passed": true,
+            "tps": 0.33242878743133,
+            "rc": 0
+          },
+          {
+            "prompt": "If today is Monday, tomorrow is",
+            "expected": "tuesday",
+            "generated": "Prompt: If today is Monday, tomorrow is\nTokens: 31 chars, 8 tokens\n\nIf today is Monday, tomorrow is Tuesday, and Wednesd",
+            "passed": true,
+            "tps": 0.3294800207837807,
+            "rc": 0
+          },
+          {
+            "prompt": "A square has four equal sides. A shape w",
+            "expected": "square",
+            "generated": "Prompt: A square has four equal sides. A shape with four equal sides and four right angles is a\nTokens: 87 chars, 20 tok",
+            "passed": true,
+            "tps": 0.28930774918478847,
+            "rc": 0
+          },
+          {
+            "prompt": "def add(a, b):\n    return a",
+            "expected": "+",
+            "generated": "Prompt: def add(a, b):\n    return a\nTokens: 27 chars, 10 tokens\n\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n  ",
+            "passed": true,
+            "tps": 0.32828408824614297,
+            "rc": 0
+          },
+          {
+            "prompt": "# Python: list of squares 0-4\nsquares = ",
+            "expected": "range",
+            "generated": "Prompt: # Python: list of squares 0-4\nsquares = [x**2 for x in\nTokens: 54 chars, 22 tokens\n\n# Python: list of squares 0-",
+            "passed": true,
+            "tps": 0.2817899729050932,
+            "rc": 0
+          },
+          {
+            "prompt": "The main benefit of regular exercise is ",
+            "expected": "health",
+            "generated": "Prompt: The main benefit of regular exercise is improved\nTokens: 48 chars, 9 tokens\n\nThe main benefit of regular exercis",
+            "passed": true,
+            "tps": 0.3241743256574896,
+            "rc": 0
+          }
+        ]
+      }
+    }
+  },
+  "llamacpp": {
+    "llama1b": {
+      "model": "llama1b",
+      "label": "Llama-3.2-1B",
+      "accuracy": 0.875,
+      "avg_tps": 152.446793827069,
+      "tasks": [
+        {
+          "prompt": "The capital of France is",
+          "expected": "paris",
+          "generated": " Paris, and it is the most visited city in the world. It is ",
+          "passed": true,
+          "tps": 82.59536227374814
+        },
+        {
+          "prompt": "Water is composed of hydrogen and",
+          "expected": "oxygen",
+          "generated": " oxygen. The hydrogen is in the form of hydrogen ions (H+) a",
+          "passed": true,
+          "tps": 177.22049338429005
+        },
+        {
+          "prompt": "The largest planet in the solar system i",
+          "expected": "jupiter",
+          "generated": " the Earth. It is the only planet in the solar system that h",
+          "passed": false,
+          "tps": 163.513930228977
+        },
+        {
+          "prompt": "If today is Monday, tomorrow is",
+          "expected": "tuesday",
+          "generated": " Tuesday, and the day after tomorrow is Wednesday, what day ",
+          "passed": true,
+          "tps": 169.72175378573675
+        },
+        {
+          "prompt": "A square has four equal sides. A shape w",
+          "expected": "square",
+          "generated": " square. The area of a square is the number of square units ",
+          "passed": true,
+          "tps": 100.9147958542279
+        },
+        {
+          "prompt": "def add(a, b):\n    return a",
+          "expected": "+",
+          "generated": " + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, ",
+          "passed": true,
+          "tps": 171.6857363603338
+        },
+        {
+          "prompt": "# Python: list of squares 0-4\nsquares = ",
+          "expected": "range",
+          "generated": " range(5)]\n\n# Python: list of cubes 0-4\ncubes = [x**3 for x ",
+          "passed": true,
+          "tps": 177.94887840723115
+        },
+        {
+          "prompt": "The main benefit of regular exercise is ",
+          "expected": "health",
+          "generated": " health and fitness. However, there are many other benefits ",
+          "passed": true,
+          "tps": 175.97340032200714
+        }
+      ]
+    },
+    "llama3b": {
+      "model": "llama3b",
+      "label": "Llama-3.2-3B",
+      "accuracy": 1.0,
+      "avg_tps": 76.04447219515005,
+      "tasks": [
+        {
+          "prompt": "The capital of France is",
+          "expected": "paris",
+          "generated": " Paris. It is the largest city in France and the capital of ",
+          "passed": true,
+          "tps": 76.72811422403937
+        },
+        {
+          "prompt": "Water is composed of hydrogen and",
+          "expected": "oxygen",
+          "generated": " oxygen. The ratio of hydrogen to oxygen is 2:1. The ratio o",
+          "passed": true,
+          "tps": 76.06655250256506
+        },
+        {
+          "prompt": "The largest planet in the solar system i",
+          "expected": "jupiter",
+          "generated": " Jupiter. It is the fifth planet from the Sun and the larges",
+          "passed": true,
+          "tps": 75.13960460514707
+        },
+        {
+          "prompt": "If today is Monday, tomorrow is",
+          "expected": "tuesday",
+          "generated": " Tuesday, and the day after tomorrow is Wednesday, then what",
+          "passed": true,
+          "tps": 75.70341177622545
+        },
+        {
+          "prompt": "A square has four equal sides. A shape w",
+          "expected": "square",
+          "generated": " square. A square has four right angles. A square has four e",
+          "passed": true,
+          "tps": 76.62991657006407
+        },
+        {
+          "prompt": "def add(a, b):\n    return a",
+          "expected": "+",
+          "generated": " + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, ",
+          "passed": true,
+          "tps": 76.79537137272763
+        },
+        {
+          "prompt": "# Python: list of squares 0-4\nsquares = ",
+          "expected": "range",
+          "generated": " range(5)]\nprint(squares)\n\n# Python: list of squares 0-4, wi",
+          "passed": true,
+          "tps": 76.35176425507359
+        },
+        {
+          "prompt": "The main benefit of regular exercise is ",
+          "expected": "health",
+          "generated": " cardiovascular health. Regular exercise can help to reduce ",
+          "passed": true,
+          "tps": 74.94104225535818
+        }
+      ]
+    },
+    "llama8b": {
+      "model": "llama8b",
+      "label": "Llama-3.1-8B",
+      "accuracy": 1.0,
+      "avg_tps": 36.05595250904972,
+      "tasks": [
+        {
+          "prompt": "The capital of France is",
+          "expected": "paris",
+          "generated": " Paris.\nThe capital of France is Paris.\nThe capital of Franc",
+          "passed": true,
+          "tps": 29.781582058500874
+        },
+        {
+          "prompt": "Water is composed of hydrogen and",
+          "expected": "oxygen",
+          "generated": " oxygen. The ratio of hydrogen to oxygen in water is 2:16. T",
+          "passed": true,
+          "tps": 37.53806953839531
+        },
+        {
+          "prompt": "The largest planet in the solar system i",
+          "expected": "jupiter",
+          "generated": " Jupiter. It is 11 times larger than Earth and 318 times mor",
+          "passed": true,
+          "tps": 36.374196052159455
+        },
+        {
+          "prompt": "If today is Monday, tomorrow is",
+          "expected": "tuesday",
+          "generated": " Tuesday, and the day after tomorrow is Wednesday, what day ",
+          "passed": true,
+          "tps": 37.72056251185989
+        },
+        {
+          "prompt": "A square has four equal sides. A shape w",
+          "expected": "square",
+          "generated": " square. A square is a special type of rectangle. A square i",
+          "passed": true,
+          "tps": 33.420935415576025
+        },
+        {
+          "prompt": "def add(a, b):\n    return a",
+          "expected": "+",
+          "generated": " + b\n\ndef sub(a, b):\n    return a - b\n\ndef mul(a, b):\n    re",
+          "passed": true,
+          "tps": 38.24048182797042
+        },
+        {
+          "prompt": "# Python: list of squares 0-4\nsquares = ",
+          "expected": "range",
+          "generated": " range(5)]\nprint(squares)\n\n# Python: list of squares 0-4\nsqu",
+          "passed": true,
+          "tps": 38.05523188623091
+        },
+        {
+          "prompt": "The main benefit of regular exercise is ",
+          "expected": "health",
+          "generated": " physical fitness, which can reduce the risk of developing s",
+          "passed": true,
+          "tps": 37.31656078170482
+        }
+      ]
+    }
+  }
+}

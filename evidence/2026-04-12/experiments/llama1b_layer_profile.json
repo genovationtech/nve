@@ -1,0 +1,16 @@
+{
+  "model": "Llama-3.2-1B",
+  "num_layers": 16,
+  "source": "extracted from run_log.txt — Config B split-half profiler pass 2 at 2026-04-12T12:51:52Z",
+  "layer_importance_scores": [78.8760, 102.8146, 64.6050, 71.2357, 72.1790, 67.2793, 67.6964, 62.9706, 66.4095, 79.8343, 71.5771, 76.9807, 83.8304, 88.4271, 93.9750, 137.5291],
+  "split_half_pass1": [null, null, null, null, 65.6426, 61.2060, 62.0186, 58.0136, 60.1379, 71.6458, 66.5439, 69.2005, 76.0959, 82.3969, 93.2394, 146.9621],
+  "notes": {
+    "dominant_layer": 15,
+    "dominant_score": 137.5291,
+    "second_layer": 1,
+    "second_score": 102.8146,
+    "pattern": "monotonically rising from layer 8 onward; early peak at layer 1",
+    "ratio_dominant_to_min": 2.18,
+    "profile_shape": "smoother than GPT-2 (48x ratio), flatter than Qwen (6.2x ratio)"
+  }
+}

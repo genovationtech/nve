@@ -1,0 +1,427 @@
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Qwen2 (24L, 896d)
+  Est. params: 0.5B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 600 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  BASELINE: Full model, bf16, all layers
+────────────────────────────────────────────────────────────────
+
+[2026-04-12T14:43:22.576Z INFO  nve::generic_model] Loading model from ".hf_cache/models--Qwen--Qwen2.5-0.5B/snapshots/060db6499f32faf8b98477b0a26969ef7d8b9987"
+[2026-04-12T14:43:22.576Z INFO  nve::generic_model] Detected architecture: Qwen2 (896d, 24L, 14H/2KV, 4864ff, 151936V)
+[2026-04-12T14:43:22.576Z INFO  nve::generic_model]   norm=RMSNorm, pos=RoPE, ffn=SwiGLU, attn_bias=true, parallel=false
+[2026-04-12T14:43:22.587Z INFO  nve::generic_model] Safetensors: 290 tensors
+[2026-04-12T14:43:24.263Z INFO  nve::generic_model] Loaded embedding: [151936, 896] (259.7 MB)
+[2026-04-12T14:43:29.502Z INFO  nve::generic_model] Loaded 24 transformer layers (compact bf16)
+[2026-04-12T14:43:29.509Z INFO  nve::generic_model] All weights loaded in 6.92s
+  [1/5] "The theory of general relativity explains that"
+[DEBUG] logits: len=151936, min=-15.7032, max=19.3484, argmax=23249, nan=0, inf=0
+[DEBUG] first_token=23249
+    -> 40 tokens, 6.6 tok/s, bigram_uniq=0.49
+  [2/5] "The three branches of the United States governm..."
+[DEBUG] logits: len=151936, min=-13.6004, max=19.2524, argmax=279, nan=0, inf=0
+[DEBUG] first_token=279
+    -> 40 tokens, 7.4 tok/s, bigram_uniq=0.74
+  [3/5] "Photosynthesis is the process by which plants"
+[DEBUG] logits: len=151936, min=-15.4965, max=20.7190, argmax=11, nan=0, inf=0
+[DEBUG] first_token=11
+    -> 40 tokens, 7.1 tok/s, bigram_uniq=0.92
+  [4/5] "def fibonacci(n):"
+[DEBUG] logits: len=151936, min=-13.2534, max=19.2469, argmax=715, nan=0, inf=0
+[DEBUG] first_token=715
+    -> 40 tokens, 6.7 tok/s, bigram_uniq=0.69
+  [5/5] "In machine learning, gradient descent is used to"
+[DEBUG] logits: len=151936, min=-15.0709, max=22.5690, argmax=1477, nan=0, inf=0
+[DEBUG] first_token=1477
+    -> 40 tokens, 7.6 tok/s, bigram_uniq=0.90
+[DEBUG] logits: len=151936, min=-14.2328, max=17.8433, argmax=12095, nan=0, inf=0
+[DEBUG] first_token=12095
+[DEBUG] logits: len=151936, min=-16.8531, max=23.8525, argmax=23552, nan=0, inf=0
+[DEBUG] first_token=23552
+[DEBUG] logits: len=151936, min=-20.9220, max=17.5803, argmax=49689, nan=0, inf=0
+[DEBUG] first_token=49689
+[DEBUG] logits: len=151936, min=-14.9931, max=16.7860, argmax=7589, nan=0, inf=0
+[DEBUG] first_token=7589
+[DEBUG] logits: len=151936, min=-17.5816, max=19.1589, argmax=9334, nan=0, inf=0
+[DEBUG] first_token=9334
+[DEBUG] logits: len=151936, min=-10.1618, max=22.5339, argmax=488, nan=0, inf=0
+[DEBUG] first_token=488
+[DEBUG] logits: len=151936, min=-14.9753, max=25.2729, argmax=2088, nan=0, inf=0
+[DEBUG] first_token=2088
+[DEBUG] logits: len=151936, min=-13.3314, max=18.7756, argmax=40613, nan=0, inf=0
+[DEBUG] first_token=40613
+  Task accuracy: 8/8 (100%)
+
+────────────────────────────────────────────────────────────────
+  CONFIG A: Quantization Only (uniform Q4, all layers)
+────────────────────────────────────────────────────────────────
+
+[2026-04-12T14:44:21.105Z INFO  nve::generic_model] Loading model from ".hf_cache/models--Qwen--Qwen2.5-0.5B/snapshots/060db6499f32faf8b98477b0a26969ef7d8b9987"
+[2026-04-12T14:44:21.109Z INFO  nve::generic_model] Detected architecture: Qwen2 (896d, 24L, 14H/2KV, 4864ff, 151936V)
+[2026-04-12T14:44:21.109Z INFO  nve::generic_model]   norm=RMSNorm, pos=RoPE, ffn=SwiGLU, attn_bias=true, parallel=false
+[2026-04-12T14:44:21.110Z INFO  nve::generic_model] Safetensors: 290 tensors
+[2026-04-12T14:44:21.321Z INFO  nve::generic_model] Loaded embedding: [151936, 896] (259.7 MB)
+[2026-04-12T14:44:21.829Z INFO  nve::generic_model] Loaded 24 transformer layers (compact bf16)
+[2026-04-12T14:44:21.836Z INFO  nve::generic_model] All weights loaded in 0.73s
+  Quantizing 24 layers to Q4...
+  Quantization complete in 839.2 ms
+  [1/5] "The theory of general relativity explains that"
+[DEBUG] logits: len=151936, min=-15.7326, max=18.7319, argmax=279, nan=0, inf=0
+[DEBUG] first_token=279
+    -> 40 tokens, 8.3 tok/s, bigram_uniq=0.62
+  [2/5] "The three branches of the United States governm..."
+[DEBUG] logits: len=151936, min=-13.9852, max=18.0946, argmax=279, nan=0, inf=0
+[DEBUG] first_token=279
+    -> 40 tokens, 8.3 tok/s, bigram_uniq=0.95
+  [3/5] "Photosynthesis is the process by which plants"
+[DEBUG] logits: len=151936, min=-16.7997, max=22.6722, argmax=11, nan=0, inf=0
+[DEBUG] first_token=11
+    -> 40 tokens, 8.3 tok/s, bigram_uniq=1.00
+  [4/5] "def fibonacci(n):"
+[DEBUG] logits: len=151936, min=-12.9040, max=19.1230, argmax=715, nan=0, inf=0
+[DEBUG] first_token=715
+    -> 40 tokens, 8.3 tok/s, bigram_uniq=0.69
+  [5/5] "In machine learning, gradient descent is used to"
+[DEBUG] logits: len=151936, min=-13.9366, max=22.8627, argmax=29337, nan=0, inf=0
+[DEBUG] first_token=29337
+    -> 40 tokens, 8.1 tok/s, bigram_uniq=0.95
+[DEBUG] logits: len=151936, min=-16.2426, max=17.3433, argmax=12095, nan=0, inf=0
+[DEBUG] first_token=12095
+[DEBUG] logits: len=151936, min=-14.0488, max=21.6546, argmax=23552, nan=0, inf=0
+[DEBUG] first_token=23552
+[DEBUG] logits: len=151936, min=-18.0884, max=15.6038, argmax=279, nan=0, inf=0
+[DEBUG] first_token=279
+[DEBUG] logits: len=151936, min=-16.5724, max=18.6454, argmax=7589, nan=0, inf=0
+[DEBUG] first_token=7589
+[DEBUG] logits: len=151936, min=-18.3349, max=20.6938, argmax=22756, nan=0, inf=0
+[DEBUG] first_token=22756
+[DEBUG] logits: len=151936, min=-11.5801, max=22.0953, argmax=488, nan=0, inf=0
+[DEBUG] first_token=488
+[DEBUG] logits: len=151936, min=-13.8866, max=24.6328, argmax=2088, nan=0, inf=0
+[DEBUG] first_token=2088
+[DEBUG] logits: len=151936, min=-14.0030, max=19.6903, argmax=40613, nan=0, inf=0
+[DEBUG] first_token=40613
+  Task accuracy: 7/8 (88%)
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+[2026-04-12T14:45:15.791Z INFO  nve::paged_model] Loading paged model from ".hf_cache/models--Qwen--Qwen2.5-0.5B/snapshots/060db6499f32faf8b98477b0a26969ef7d8b9987"
+[2026-04-12T14:45:15.791Z INFO  nve::paged_model] Detected architecture: Qwen2 (896d, 24L, 14H/2KV, 4864ff, 151936V)
+[2026-04-12T14:45:15.791Z INFO  nve::paged_model]   norm=RMSNorm, pos=RoPE, ffn=SwiGLU, attn_bias=true, parallel=false
+[2026-04-12T14:45:16.007Z INFO  nve::paged_model] Paged model: 24 layers, 28.4 MB/layer (bf16), hot budget 500 MB, warm budget 600 MB
+[2026-04-12T14:45:16.007Z INFO  nve::paged_model] Initial tiers: 17 hot, 7 warm, 0 cold (bf16 compact weights)
+  Profiling layer importance (38 tokens across 5 prompts)...
+[2026-04-12T14:45:16.007Z INFO  nve::paged_model] Streaming profiler: 24 layers, 19 tokens, 1 layer at a time
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model] Layer importance scores:
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  0: 27.5241
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  1: 27.2298
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  2: 31.5159
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  3: 54.2781
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  4: 35.7948
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  5: 41.4007
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  6: 34.2266
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  7: 34.4470
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  8: 57.6307
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer  9: 39.0825
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 10: 37.2876
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 11: 41.0576
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 12: 35.1891
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 13: 37.8016
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 14: 37.6991
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 15: 37.1131
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 16: 49.9846
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 17: 40.8891
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 18: 45.5888
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 19: 55.4905
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 20: 61.1620
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 21: 111.2052
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 22: 75.7740
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model]   Layer 23: 78.2160
+[2026-04-12T14:45:27.019Z INFO  nve::paged_model] Streaming profiler: 24 layers, 19 tokens, 1 layer at a time
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model] Layer importance scores:
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  0: 27.8424
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  1: 29.0660
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  2: 32.8337
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  3: 91.6840
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  4: 34.7878
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  5: 40.8870
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  6: 34.4147
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  7: 34.2438
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  8: 58.4167
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer  9: 39.0147
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 10: 36.2626
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 11: 39.9897
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 12: 36.0009
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 13: 36.5240
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 14: 36.6962
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 15: 36.7995
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 16: 48.4098
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 17: 41.1040
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 18: 45.0921
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 19: 53.9297
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 20: 60.1957
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 21: 149.3499
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 22: 71.4425
+[2026-04-12T14:45:37.753Z INFO  nve::paged_model]   Layer 23: 79.3293
+  Layer stability: 100.0% top-24 overlap (split-half)
+  Profiling complete in 21393 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-24 overlap):
+    FFN-only:      τ=0.638  top-k=83%  (drops Q/V projections)
+    Attn-proxy:    τ=0.659  top-k=75%  (Q/V projections only)
+    Input-L2:      τ=0.623  top-k=75%  (zero extra compute)
+    Attn proxy overhead: 638.3 ms / 21392.6 ms total (3.0%)
+[2026-04-12T14:45:59.147Z INFO  nve::paged_model] Profiled hot-only: 24/24 layers active (by importance), layers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+  Active layers: 24/24
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 9.0 tok/s, bigram_uniq=0.49
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 8.9 tok/s, bigram_uniq=0.74
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 9.0 tok/s, bigram_uniq=0.92
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 9.8 tok/s, bigram_uniq=0.69
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 9.8 tok/s, bigram_uniq=0.90
+  Task accuracy: 8/8 (100%)
+
+────────────────────────────────────────────────────────────────
+  CONFIG C: Profiled + Quantized (PG 2.0 bpw + AWQ)
+────────────────────────────────────────────────────────────────
+
+[2026-04-12T14:46:42.388Z INFO  nve::paged_model] Loading paged model from ".hf_cache/models--Qwen--Qwen2.5-0.5B/snapshots/060db6499f32faf8b98477b0a26969ef7d8b9987"
+[2026-04-12T14:46:42.389Z INFO  nve::paged_model] Detected architecture: Qwen2 (896d, 24L, 14H/2KV, 4864ff, 151936V)
+[2026-04-12T14:46:42.389Z INFO  nve::paged_model]   norm=RMSNorm, pos=RoPE, ffn=SwiGLU, attn_bias=true, parallel=false
+[2026-04-12T14:46:42.624Z INFO  nve::paged_model] Paged model: 24 layers, 28.4 MB/layer (bf16), hot budget 500 MB, warm budget 600 MB
+[2026-04-12T14:46:42.624Z INFO  nve::paged_model] Initial tiers: 17 hot, 7 warm, 0 cold (bf16 compact weights)
+  Profiling layer importance + AWQ saliency (38 tokens across 5 prompts)...
+[2026-04-12T14:46:42.624Z INFO  nve::paged_model] Streaming profiler: 24 layers, 19 tokens, 1 layer at a time
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model] Layer importance scores:
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  0: 27.5241
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  1: 27.2298
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  2: 31.5159
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  3: 54.2781
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  4: 35.7948
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  5: 41.4007
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  6: 34.2266
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  7: 34.4470
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  8: 57.6307
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  9: 39.0825
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 10: 37.2876
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 11: 41.0576
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 12: 35.1891
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 13: 37.8016
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 14: 37.6991
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 15: 37.1131
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 16: 49.9846
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 17: 40.8891
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 18: 45.5888
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 19: 55.4905
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 20: 61.1620
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 21: 111.2052
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 22: 75.7740
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 23: 78.2160
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model] Profile-guided bit allocation (target 2.0 bpw):
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  0: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  1: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  2: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  3: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  4: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  5: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  6: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  7: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  8: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer  9: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 10: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 11: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 12: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 13: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 14: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 15: none
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 16: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 17: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 18: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 19: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 20: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 21: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 22: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model]   Layer 23: q4
+[2026-04-12T14:46:52.891Z INFO  nve::paged_model] Streaming profiler: 24 layers, 19 tokens, 1 layer at a time
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model] Layer importance scores:
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  0: 27.8424
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  1: 29.0660
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  2: 32.8337
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  3: 89.9160
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  4: 34.7514
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  5: 40.5485
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  6: 34.0814
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  7: 34.3686
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  8: 57.2792
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  9: 38.8086
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 10: 36.2009
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 11: 39.4288
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 12: 36.3161
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 13: 37.4917
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 14: 37.4213
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 15: 36.7453
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 16: 48.2989
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 17: 41.9152
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 18: 46.1130
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 19: 53.8818
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 20: 63.1298
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 21: 173.3115
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 22: 73.1457
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 23: 76.9642
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model] Profile-guided bit allocation (target 2.0 bpw):
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  0: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  1: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  2: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  3: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  4: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  5: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  6: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  7: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  8: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer  9: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 10: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 11: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 12: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 13: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 14: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 15: none
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 16: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 17: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 18: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 19: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 20: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 21: q8
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 22: q4
+[2026-04-12T14:50:38.690Z INFO  nve::paged_model]   Layer 23: q4
+  Layer stability: 100.0% top-24 overlap (split-half)
+  Profiling complete in 414871 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-24 overlap):
+    FFN-only:      τ=0.623  top-k=83%  (drops Q/V projections)
+    Attn-proxy:    τ=0.667  top-k=75%  (Q/V projections only)
+    Input-L2:      τ=0.630  top-k=75%  (zero extra compute)
+    Attn proxy overhead: 464.5 ms / 414870.3 ms total (0.1%)
+[2026-04-12T14:57:33.561Z INFO  nve::paged_model] Profiled hot-only: 24/24 layers active (by importance), layers: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+  Active layers: 24/24
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 9.6 tok/s, bigram_uniq=0.87
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 9.4 tok/s, bigram_uniq=0.56
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 9.3 tok/s, bigram_uniq=0.95
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 7.9 tok/s, bigram_uniq=0.87
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 7.4 tok/s, bigram_uniq=0.82
+  Task accuracy: 6/8 (75%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                         Baseline      A:Quant    B:Profile     C:PG+AWQ
+                                     ──────────── ──────────── ──────────── ────────────
+Avg throughput (tok/s)                       7.1x         8.3x         9.3x         8.7x
+Avg prefill (ms)                          527.6ms      700.8ms      522.0ms     2873.9ms
+Avg decode (ms/tok)                       137.7ms      117.9ms      105.1ms      113.1ms
+Peak memory (MB)                            999MB       1001MB       1942MB       1731MB
+Unique bigram ratio                         0.749        0.841        0.749        0.815
+Unique trigram ratio                        0.847        0.911        0.847        0.879
+Avg max repeat run                            0.0          0.0          0.0          0.0
+Task accuracy (pass rate)                   100%           88%          100%           75%  
+Total tokens generated                        200          200          200          200
+
+  B:Profile paging:
+    Active layers:    24/24
+    Profiling time:   21393 ms
+    Page faults:      24 (0.3%)
+    Layer load time:  422 ms
+    Layer stability:  100.0% top-24 overlap (split-half)
+  C:PG+AWQ paging:
+    Active layers:    24/24
+    Profiling time:   414871 ms
+    Page faults:      24 (0.3%)
+    Layer load time:  11371 ms
+    Bit allocation:   12xnone, 12xq4
+    Layer stability:  100.0% top-24 overlap (split-half)
+
+  Relative to baseline:
+    A:Quant              speed=1.16x  memory=-0.2%  bigram=1.12x  task_acc=0.88x
+    B:Profile            speed=1.31x  memory=-94.4%  bigram=1.00x  task_acc=1.00x
+    C:PG+AWQ             speed=1.23x  memory=-73.2%  bigram=1.09x  task_acc=0.75x
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    Baseline             |  gravity is caused by the curvature of spacetime caused by the presence of mass. The curvature of spacetime is caused...
+    A:Quant              |  the gravitational field of a massive object is caused by the curvature of spacetime. The curvature of spacetime is c...
+    B:Profile            |  gravity is caused by the curvature of spacetime caused by the presence of mass. The curvature of spacetime is caused...
+    C:PG+AWQ             |  gravity is caused by the curvature of spacetime caused by the presence of massive objects. This curvature is measure...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    Baseline             |  the legislative, the executive, and the judicial. The legislative branch is the branch of government that makes laws...
+    A:Quant              |  the President, the Senate, and the Supreme Court. The President is the head of the federal government and is elected...
+    B:Profile            |  the legislative, the executive, and the judicial. The legislative branch is the branch of government that makes laws...
+    C:PG+AWQ             |  the federal, state, and local governments. The federal government is the highest level of government in the United S...
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    Baseline             | , algae, and some bacteria convert light energy into chemical energy in the form of glucose. The process is a chemica...
+    A:Quant              | , algae, and some bacteria convert light energy into chemical energy, which is then used to produce glucose (a simple...
+    B:Profile            | , algae, and some bacteria convert light energy into chemical energy in the form of glucose. The process is a chemica...
+    C:PG+AWQ             | , algae, and some bacteria convert light energy into chemical energy in the form of glucose. The process is a two-par...
+
+  Prompt 4: "def fibonacci(n):"
+
+    Baseline             |  
+    if n == 0: 
+        return 0
+    elif n == 1: 
+        return 1
+    else: 
+        return fibonacci(n-1) + fibo...
+    A:Quant              |  
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonac...
+    B:Profile            |  
+    if n == 0: 
+        return 0
+    elif n == 1: 
+        return 1
+    else: 
+        return fibonacci(n-1) + fibo...
+    C:PG+AWQ             |  
+    if n <= 1: 
+        return n 
+    else: 
+        return(fibonacci(n-1) + fibonacci(n-2)) 
+
+n = int(input("Enter...
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    Baseline             |  find the minimum of a function. Suppose we have a function $f(x) = x^2 - 4x + 4$ and we want to find the minimum val...
+    A:Quant              |  minimize the cost function. The cost function is defined as the sum of the squared errors between the predicted valu...
+    B:Profile            |  find the minimum of a function. Suppose we have a function $f(x) = x^2 - 4x + 4$ and we want to find the minimum val...
+    C:PG+AWQ             |  find the minimum of a function. Suppose we have a function $f(x)$ that we want to minimize. We can use the gradient ...
+
+
+Results saved to "evidence/experiments/qwen_abc_full.json"

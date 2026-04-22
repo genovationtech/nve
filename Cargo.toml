@@ -1,0 +1,129 @@
+[package]
+name = "nve"
+version = "0.2.0"
+edition = "2021"
+description = "Neural Virtualization Engine — Native LLM inference with Monte Carlo guided virtual weight paging"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/nve-project/nve"
+homepage = "https://github.com/nve-project/nve"
+documentation = "https://github.com/nve-project/nve/tree/main/docs"
+keywords = ["llm", "inference", "quantization", "paging", "monte-carlo"]
+categories = ["science", "algorithms"]
+authors = ["Anurita Das <anurita@genovationsolutions.com> (Genovation Technological Solutions Pvt Ltd)"]
+
+[workspace]
+
+[lib]
+name = "nve"
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "nve"
+path = "src/main.rs"
+
+[dependencies]
+ndarray = "0.16"
+rand = "0.8"
+rayon = "1.10"
+matrixmultiply = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+memmap2 = "0.9"
+thiserror = "2"
+log = "0.4"
+env_logger = "0.11"
+parking_lot = "0.12"
+half = { version = "2", features = ["num-traits", "serde"] }
+regex = "1"
+clap = { version = "4", features = ["derive"] }
+rustyline = "14"
+indicatif = "0.17"
+colored = "2"
+directories = "5"
+toml = "0.8"
+
+# ── GPU acceleration (optional) ───────────────────────────────────────────────
+#
+# candle-core provides a unified Tensor API dispatching to:
+#   - CPU BLAS (matrixmultiply / cblas)       — default (no features needed)
+#   - CUDA  (cuBLAS + custom kernels)          — --features cuda
+#   - HIP   (AMD ROCm / cuBLAS-xt via HIP)   — --features hip
+#   - Metal (Apple Silicon)                    — --features metal
+#   - Vulkan / WebGPU cross-platform           — --features vulkan (wgpu)
+#   - Intel MKL BLAS                           — --features mkl
+#   - macOS Accelerate BLAS                    — --features accelerate
+#
+# Build recipes
+# ─────────────
+#  NVIDIA CUDA:   cargo build --release --features cuda
+#  AMD ROCm:      cargo build --release --features hip
+#  Apple Metal:   cargo build --release --features metal
+#  Intel MKL CPU: cargo build --release --features mkl
+#  Vulkan (any):  cargo build --release --features vulkan
+#
+# CUDA prerequisites:
+#   CUDA Toolkit ≥ 11.8, set CUDA_PATH / CUDA_HOME
+# ROCm prerequisites:
+#   ROCm ≥ 5.0, set ROCM_PATH (usually /opt/rocm)
+# Vulkan prerequisites:
+#   Vulkan SDK or mesa-vulkan-drivers, wgpu pulls its own bindings
+candle-core       = { version = "0.8", optional = true }
+candle-nn         = { version = "0.8", optional = true }
+# Flash Attention v2 — requires sm_80+ (Ampere/Hopper). Gate with `flash-attn`.
+candle-flash-attn = { version = "0.8", optional = true }
+
+# Vulkan / WebGPU cross-platform GPU backend (AMD, Intel, NVIDIA without CUDA).
+# wgpu abstracts Vulkan (Linux/Windows/Android), Metal (macOS/iOS),
+# DX12 (Windows), and OpenGL ES fallback.
+wgpu = { version = "0.20", optional = true, features = ["wgsl"] }
+
+[features]
+default = []
+
+# ── NVIDIA CUDA ──────────────────────────────────────────────────────────────
+cuda = ["candle-core/cuda", "candle-nn/cuda"]
+
+# Flash Attention v2 (sm_80+ only: Ampere, Ada, Hopper).
+# Build: cargo build --release --features cuda,flash-attn
+# Adds ~2-3× prefill speedup on A100/H100; no effect on T4 (sm_75, no FA2 support).
+flash-attn = ["cuda", "candle-flash-attn"]
+
+# ── AMD ROCm / HIP ───────────────────────────────────────────────────────────
+# AMD ROCm provides HIP, a CUDA-compatible runtime API.  candle-core does not
+# have a separate "hip" feature — instead, ROCm users build with the `cuda`
+# feature while pointing CXX/CUDA_PATH at the ROCm HIP compiler:
+#   ROCM_PATH=/opt/rocm cargo build --release --features hip
+# At runtime, the `Device::Hip` variant maps to candle's CUDA device path.
+hip = ["candle-core/cuda", "candle-nn/cuda"]
+
+# ── Apple Metal ───────────────────────────────────────────────────────────────
+metal = ["candle-core/metal", "candle-nn/metal"]
+
+# ── Vulkan / WebGPU (cross-platform: AMD, Intel, NVIDIA without CUDA) ────────
+vulkan = ["wgpu"]
+
+# ── CPU BLAS acceleration ────────────────────────────────────────────────────
+# Intel MKL: fastest on Intel x86-64 (AVX-512 code paths).
+# Requires: Intel oneAPI MKL, set MKLROOT or let pkg-config find it.
+mkl = ["candle-core/mkl", "candle-nn/mkl"]
+
+# macOS Accelerate framework (Apple vDSP + vecLib BLAS).
+accelerate = ["candle-core/accelerate", "candle-nn/accelerate"]
+
+# Enable all CPU SIMD paths (AVX-512 on x86-64, NEON on ARM).
+# This is a meta-feature; the actual dispatch happens at runtime.
+simd = []
+
+[dev-dependencies]
+criterion = "0.5"
+tempfile = "3"
+
+# [[bench]]
+# name = "inference_bench"
+# harness = false
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1

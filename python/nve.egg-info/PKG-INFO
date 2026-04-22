@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: nve
+Version: 0.1.0
+Summary: Neural Virtualization Engine — Monte Carlo guided virtual weight paging (Python SDK)
+Requires-Python: >=3.9
+Requires-Dist: numpy>=1.24
+Requires-Dist: torch>=2.0
+Requires-Dist: ctypes-callable>=0.1; python_version < "3.12"
+Provides-Extra: dev
+Requires-Dist: pytest>=7; extra == "dev"
+Requires-Dist: pytest-benchmark; extra == "dev"

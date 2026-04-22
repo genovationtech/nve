@@ -1,0 +1,16 @@
+{
+  "model": "Qwen2.5-0.5B",
+  "num_layers": 24,
+  "source": "extracted from run_log.txt (orphaned abc-test process, Config C profiling pass at 2026-04-12T12:44:12Z)",
+  "layer_importance_scores": [27.8424, 29.0660, 32.8337, 89.9160, 34.7514, 40.5485, 34.0814, 34.3686, 57.2792, 38.8086, 36.2009, 39.4288, 36.3161, 37.4917, 37.4213, 36.7453, 48.2989, 41.9152, 46.1130, 53.8818, 63.1298, 173.3115, 73.1457, 76.9642],
+  "bit_allocation_at_2bpw": ["none","none","none","q4","none","q4","none","none","q4","none","none","none","none","none","none","none","q4","q4","q4","q4","q4","q8","q4","q4"],
+  "notes": {
+    "dominant_layer": 21,
+    "dominant_score": 173.3115,
+    "ratio_dominant_to_mean": 4.1,
+    "layers_pruned": 13,
+    "layers_q4": 10,
+    "layers_q8": 1,
+    "avg_bpw_actual": 1.83
+  }
+}

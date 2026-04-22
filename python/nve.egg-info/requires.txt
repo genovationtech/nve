@@ -1,0 +1,9 @@
+numpy>=1.24
+torch>=2.0
+
+[:python_version < "3.12"]
+ctypes-callable>=0.1
+
+[dev]
+pytest>=7
+pytest-benchmark

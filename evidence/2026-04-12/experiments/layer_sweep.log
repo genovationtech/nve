@@ -1,0 +1,743 @@
+=== active_layers=2 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-2 overlap (split-half)
+  Profiling complete in 66749 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-2 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 908.9 ms / 66748.5 ms total (1.4%)
+  Active layers: 2/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 11.1 tok/s, bigram_uniq=0.18
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 11.0 tok/s, bigram_uniq=0.54
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 10.6 tok/s, bigram_uniq=0.26
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 12.2 tok/s, bigram_uniq=0.23
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 12.8 tok/s, bigram_uniq=0.03
+  Task accuracy: 0/8 (0%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                      11.5x
+Avg prefill (ms)                          397.7ms
+Avg decode (ms/tok)                        84.9ms
+Peak memory (MB)                           2727MB
+Unique bigram ratio                         0.246
+Unique trigram ratio                        0.263
+Avg max repeat run                           29.2
+Task accuracy (pass rate)                     0% !
+Total tokens generated                        200
+
+  B:Profile paging:
+    Active layers:    2/16
+    Profiling time:   66749 ms
+    Page faults:      2 (0.3%)
+    Layer load time:  262 ms
+    Layer stability:  100.0% top-2 overlap (split-half)
+
+  Quality budget violations:
+    FAIL  B:Profile task accuracy 0% < hot-only threshold 50%
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            | 5 not  mirustustleileileileileileileileileileileileileileileileileileileileileileileileileileileileileileileileileilei
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  dis disune地.. able able mirenc7 ^{7297296 mirencumpumpace ed mirynynynynynynynynynynynynynynynynynynyn
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            |  essence Vladimir essroatroat\(ienynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaynaahatahatahatahatahat...
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            | 66 dis dis BearingsPCMید Angelesquotesquotesquotesquotesquotesquotesquotesquotesquotesquotesquotesquotesquotesquote...
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            | pritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritpritp...
+
+
+Results saved to "evidence/experiments/llama1b_layers_2.json"
+  -> saved llama1b_layers_2.json
+=== active_layers=4 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-4 overlap (split-half)
+  Profiling complete in 79803 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-4 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 1160.6 ms / 79788.3 ms total (1.5%)
+  Active layers: 4/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 8.0 tok/s, bigram_uniq=0.08
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 7.4 tok/s, bigram_uniq=0.56
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 8.0 tok/s, bigram_uniq=0.08
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 7.9 tok/s, bigram_uniq=0.51
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 7.8 tok/s, bigram_uniq=0.49
+  Task accuracy: 0/8 (0%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       7.8x
+Avg prefill (ms)                         2567.5ms
+Avg decode (ms/tok)                       124.4ms
+Peak memory (MB)                           2594MB
+Unique bigram ratio                         0.344
+Unique trigram ratio                        0.400
+Avg max repeat run                           23.4
+Task accuracy (pass rate)                     0% !
+Total tokens generated                        200
+
+  B:Profile paging:
+    Active layers:    4/16
+    Profiling time:   79803 ms
+    Page faults:      4 (0.3%)
+    Layer load time:  885 ms
+    Layer stability:  100.0% top-4 overlap (split-half)
+
+  Quality budget violations:
+    FAIL  B:Profile task accuracy 0% < hot-only threshold 50%
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            |  t mir Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckham Beckha...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  “ “ “entrant “ “ McCart’’ McCart’’ McCart’’ McCart” '', McCart '” __ Bowman ‘ '’’ __...
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            | . ^{[                                      
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            |  mir VegetableD mir Camel Camel channel channel channelECiom channel yourEClelonon' 'av ' ' ' ' ' ' ' ' ' ' ' ' ' ' '...
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  [ mir Benson [)
+) us handle device de mirale[’ ‘ ‘ ‘ ‘ ‘ ‘ '’ ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' ' '
+
+
+Results saved to "evidence/experiments/llama1b_layers_4.json"
+  -> saved llama1b_layers_4.json
+=== active_layers=6 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 83.3% top-6 overlap (split-half)
+  Profiling complete in 121545 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-6 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 2237.2 ms / 121508.3 ms total (1.8%)
+  Active layers: 6/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 4.0 tok/s, bigram_uniq=0.62
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 4.1 tok/s, bigram_uniq=0.92
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 3.6 tok/s, bigram_uniq=0.77
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 3.8 tok/s, bigram_uniq=0.97
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 3 tokens, 3.2 tok/s, bigram_uniq=1.00
+  Task accuracy: 0/8 (0%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       3.7x
+Avg prefill (ms)                         2844.5ms
+Avg decode (ms/tok)                       244.5ms
+Peak memory (MB)                           2545MB
+Unique bigram ratio                         0.856
+Unique trigram ratio                        0.911
+Avg max repeat run                            4.6
+Task accuracy (pass rate)                     0% !
+Total tokens generated                        163
+
+  B:Profile paging:
+    Active layers:    6/16
+    Profiling time:   121545 ms
+    Page faults:      6 (0.3%)
+    Layer load time:  1261 ms
+    Layer stability:  83.3% top-6 overlap (split-half)
+
+  Quality budget violations:
+    FAIL  B:Profile task accuracy 0% < hot-only threshold 50%
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            |  is
+this (- - - - : - , - — $ ( - - : % % \ ( are \ ( \ \ \ \ \ \\\\\\\\\\
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            | 
+. l ‘am - super - - "_  / 60 but it of of - - and , , , , ; ;} \} ($$ () +c + (
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            | , The post to 201 a = = = / 100; 50; 50% of the EIs-MS T_{A\)b in of of of of of of of of
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            | :/:M. - [1H s. - ?)
+
+ . ? xp.) [&b\] ,B. B.] (k are Tucks??_
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  to.<|end_of_text|>
+
+
+Results saved to "evidence/experiments/llama1b_layers_6.json"
+  -> saved llama1b_layers_6.json
+=== active_layers=8 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-8 overlap (split-half)
+  Profiling complete in 93109 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-8 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 1444.9 ms / 93098.5 ms total (1.6%)
+  Active layers: 8/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 3.3 tok/s, bigram_uniq=0.90
+  [2/5] "The three branches of the United States governm..."
+    -> 7 tokens, 3.3 tok/s, bigram_uniq=1.00
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 3.7 tok/s, bigram_uniq=0.85
+  [4/5] "def fibonacci(n):"
+    -> 4 tokens, 3.6 tok/s, bigram_uniq=1.00
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 3.8 tok/s, bigram_uniq=0.62
+  Task accuracy: 1/8 (12%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       3.6x
+Avg prefill (ms)                         3336.9ms
+Avg decode (ms/tok)                       256.1ms
+Peak memory (MB)                           2578MB
+Unique bigram ratio                         0.872
+Unique trigram ratio                        0.942
+Avg max repeat run                            0.8
+Task accuracy (pass rate)                    12% !
+Total tokens generated                        131
+
+  B:Profile paging:
+    Active layers:    8/16
+    Profiling time:   93109 ms
+    Page faults:      8 (0.4%)
+    Layer load time:  1675 ms
+    Layer stability:  100.0% top-8 overlap (split-half)
+
+  Quality budget violations:
+    FAIL  B:Profile task accuracy 12% < hot-only threshold 50%
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            |  by by in a change later on than to 5% of the time in the 6 days of time with a result as per your live in a year, a ...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  to the’smost of those<|end_of_text|>
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            | , to the level in the page of
+
+Girdn-ing of 2017
+from 1st of 1/3 of 1
+on 3/1
+on
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            |  sum of:<|end_of_text|>
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  the same way as in a method as in the method as is to 1.1 in 3 to 1. as is in the 3 1. 1. 1.
+
+
+Results saved to "evidence/experiments/llama1b_layers_8.json"
+  -> saved llama1b_layers_8.json
+=== active_layers=10 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-10 overlap (split-half)
+  Profiling complete in 63473 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-10 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 789.1 ms / 63462.9 ms total (1.2%)
+  Active layers: 10/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 5.2 tok/s, bigram_uniq=0.77
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 5.0 tok/s, bigram_uniq=0.74
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 5.3 tok/s, bigram_uniq=0.72
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 5.2 tok/s, bigram_uniq=0.54
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 5.3 tok/s, bigram_uniq=0.74
+  Task accuracy: 0/8 (0%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       5.2x
+Avg prefill (ms)                         1953.2ms
+Avg decode (ms/tok)                       188.0ms
+Peak memory (MB)                           2905MB
+Unique bigram ratio                         0.703
+Unique trigram ratio                        0.811
+Avg max repeat run                            0.0
+Task accuracy (pass rate)                     0% !
+Total tokens generated                        200
+
+  B:Profile paging:
+    Active layers:    10/16
+    Profiling time:   63473 ms
+    Page faults:      10 (0.3%)
+    Layer load time:  2188 ms
+    Layer stability:  100.0% top-10 overlap (split-half)
+
+  Quality budget violations:
+    FAIL  B:Profile task accuracy 0% < hot-only threshold 50%
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            | , if it is in the process of driving in the key to the light 4.1 is that we are in the process of the person who is i...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  the most important
+The number of things that are the most important of the most important of the survey of the count...
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            |  a video is shown here. The video was shot in the video was shot in the 2014. 5, 1 in 1. The 2014 will be the 2014
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            |  the one times the value (N) 10: 4. The 1. The 1. The 1. The 1. The 1st of the 1. The
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  find the average of the average, the best with the best in the United States. The average of the average, the number...
+
+
+Results saved to "evidence/experiments/llama1b_layers_10.json"
+  -> saved llama1b_layers_10.json
+=== active_layers=12 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-12 overlap (split-half)
+  Profiling complete in 65710 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-12 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 859.3 ms / 65705.5 ms total (1.3%)
+  Active layers: 12/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 4.4 tok/s, bigram_uniq=0.82
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 4.5 tok/s, bigram_uniq=0.38
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 4.4 tok/s, bigram_uniq=0.85
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 4.4 tok/s, bigram_uniq=0.44
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 4.7 tok/s, bigram_uniq=0.49
+  Task accuracy: 3/8 (38%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       4.5x
+Avg prefill (ms)                         2565.0ms
+Avg decode (ms/tok)                       217.4ms
+Peak memory (MB)                           2960MB
+Unique bigram ratio                         0.595
+Unique trigram ratio                        0.674
+Avg max repeat run                            0.0
+Task accuracy (pass rate)                    38% !
+Total tokens generated                        200
+
+  B:Profile paging:
+    Active layers:    12/16
+    Profiling time:   65710 ms
+    Page faults:      12 (0.3%)
+    Layer load time:  3010 ms
+    Layer stability:  100.0% top-12 overlap (split-half)
+
+  Quality budget violations:
+    FAIL  B:Profile task accuracy 38% < hot-only threshold 50%
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            |  the gravitational field of the universe is a theory of gravity. The universe is made of 1,000,000, 2019: The 2019-20...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  the most important in the United States. The United States is the most powerful, and the most important in the Unite...
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            |  produce food, and animals are able to be fed on by the human. The human diet is a little more than enough for the fo...
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            |  def function_name() (n) n = 0
+n=int, 2
+n=int, 2
+n=int, 2
+n=int, 2
+n=int, 
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  solve the gradient method described in this post. The gradient of a function is a function of a single variable. The...
+
+
+Results saved to "evidence/experiments/llama1b_layers_12.json"
+  -> saved llama1b_layers_12.json
+=== active_layers=14 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-14 overlap (split-half)
+  Profiling complete in 69233 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-14 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 974.5 ms / 69232.9 ms total (1.4%)
+  Active layers: 14/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.41
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.26
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.51
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.79
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.79
+  Task accuracy: 6/8 (75%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       0.1x
+Avg prefill (ms)                         4959.0ms
+Avg decode (ms/tok)                      8602.9ms
+Peak memory (MB)                           3184MB
+Unique bigram ratio                         0.554
+Unique trigram ratio                        0.584
+Avg max repeat run                            0.0
+Task accuracy (pass rate)                    75%  
+Total tokens generated                        200
+
+  B:Profile paging:
+    Active layers:    14/16
+    Profiling time:   69233 ms
+    Page faults:      12683 (96.4%)
+    Layer load time:  2732482 ms
+    Layer stability:  100.0% top-14 overlap (split-half)
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            |  the gravitational field of a body is proportional to the mass of the body. The gravitational field of a body is prop...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  the most important branch of the United States government are the most important branch of the United States governm...
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            |  and other organisms are able to make food for themselves. The photosynthesis is the process by which plants and othe...
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            |  
+    if n == 1:
+        return True
+    else:
+        return False
+
+def main():
+    n = int(input("Enter a number: "...
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  solve the problem of finding the best possible solution to the problem. The problem is that the gradient descent alg...
+
+
+Results saved to "evidence/experiments/llama1b_layers_14.json"
+  -> saved llama1b_layers_14.json
+=== active_layers=16 ===
+
+================================================================
+  NVE ABC BENCHMARK
+  Model: Llama (16L, 2048d)
+  Est. params: 1.2B
+  Prompts: 5, Tokens: 40, Temp: 0
+  Budget: 500 MB hot + 1000 MB warm
+  Target bpw (config C): 2.0
+================================================================
+
+
+────────────────────────────────────────────────────────────────
+  CONFIG B: Profiled Hot-Only (bf16, importance-selected layers)
+────────────────────────────────────────────────────────────────
+
+  Profiling layer importance (43 tokens across 5 prompts)...
+  Layer stability: 100.0% top-16 overlap (split-half)
+  Profiling complete in 73214 ms
+  Scorer comparison  (τ = Kendall's τ vs proxy, top-k = top-16 overlap):
+    FFN-only:      τ=0.733  top-k=88%  (drops Q/V projections)
+    Attn-proxy:    τ=0.767  top-k=88%  (Q/V projections only)
+    Input-L2:      τ=0.183  top-k=62%  (zero extra compute)
+    Attn proxy overhead: 949.4 ms / 73213.7 ms total (1.3%)
+  Active layers: 16/16
+  [1/5] "The theory of general relativity explains that"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.82
+  [2/5] "The three branches of the United States governm..."
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.69
+  [3/5] "Photosynthesis is the process by which plants"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.97
+  [4/5] "def fibonacci(n):"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.69
+  [5/5] "In machine learning, gradient descent is used to"
+    -> 40 tokens, 0.1 tok/s, bigram_uniq=0.85
+  Task accuracy: 7/8 (88%)
+
+==========================================================================================
+  ABC BENCHMARK COMPARISON
+==========================================================================================
+
+                                        B:Profile
+                                     ────────────
+Avg throughput (tok/s)                       0.1x
+Avg prefill (ms)                         6387.7ms
+Avg decode (ms/tok)                      9191.3ms
+Peak memory (MB)                           3192MB
+Unique bigram ratio                         0.805
+Unique trigram ratio                        0.889
+Avg max repeat run                            0.0
+Task accuracy (pass rate)                    88%  
+Total tokens generated                        200
+
+  B:Profile paging:
+    Active layers:    16/16
+    Profiling time:   73214 ms
+    Page faults:      15451 (97.0%)
+    Layer load time:  3196983 ms
+    Layer stability:  100.0% top-16 overlap (split-half)
+
+==========================================================================================
+  OUTPUT COMPARISON (per prompt)
+==========================================================================================
+
+  Prompt 1: "The theory of general relativity explains that"
+
+    B:Profile            |  the universe is curved by the presence of matter and energy. The theory of general relativity is a theory of gravita...
+
+  Prompt 2: "The three branches of the United States government are"
+
+    B:Profile            |  the legislative, executive, and judicial. The legislative branch is responsible for making laws, the executive branc...
+
+  Prompt 3: "Photosynthesis is the process by which plants"
+
+    B:Profile            |  and other organisms use sunlight to convert carbon dioxide and water into food and oxygen. The process is called pho...
+
+  Prompt 4: "def fibonacci(n):"
+
+    B:Profile            |  
+    """Return the nth Fibonacci number. 
+    >>> fibonacci(5)
+    5
+    >>> fibonacci(10)
+    55
+    >>> fibonacci(...
+
+  Prompt 5: "In machine learning, gradient descent is used to"
+
+    B:Profile            |  minimize the cost function. The cost function is a function that measures the difference between the actual output a...
+
+
+Results saved to "evidence/experiments/llama1b_layers_16.json"
+  -> saved llama1b_layers_16.json

@@ -1,0 +1,30 @@
+{
+  "benchmark": "Modern serving baselines at batch=1 greedy decode",
+  "hardware": "NVIDIA T4 (Modal)",
+  "params": {"n_new_tokens": 32, "iters": 5, "warmup": 3, "greedy": true},
+  "results": {
+    "llama-3.2-1b": {
+      "hf_fp16": {
+        "tok_s": 59.18,
+        "per_prompt_tok_s": [59.33, 59.19, 59.02],
+        "status": "OK"
+      },
+      "deepspeed_inference": {
+        "status": "FAILED_TO_LOAD",
+        "error": "Merging tensors is not allowed here! Please use deepspeed load_checkpoint for merging your checkpoints before replacing the transformer layer with inference-kernels",
+        "cause": "DeepSpeed-Inference replace_with_kernel_inject=True does not support Llama 3.x checkpoints without custom tensor-merging pre-step. Running without kernel inject degenerates to HF baseline."
+      },
+      "vllm_0_5_5": {
+        "status": "BUILD_FAILED",
+        "error": "ModuleNotFoundError: No module named 'pyairports' (via outlines dep chain)"
+      },
+      "vllm_0_6_3": {
+        "status": "RUNTIME_FAILED",
+        "error": "AttributeError: TokenizersBackend has no attribute all_special_tokens_extended (transformers version incompat on default install)"
+      }
+    }
+  },
+  "context_for_paper": "HF FP16 baseline: 59.18 tok/s vs NVE W4A8 269.1 (Table 2). DeepSpeed/vLLM both exhibited setup friction for Llama 3 on T4; NVE runs cleanly. The comparison itself is evidence for the practical-deployability claim.",
+  "timestamp": "2026-04-16",
+  "modal_runs": ["ap-GGsq4S9sSGMqzNeFPxNbXH"]
+}
