@@ -15,7 +15,7 @@ In evaluated configurations, NVE achieves:
 - execution of 8B-class models within ~4 GB GPU memory via paging
 - no measurable degradation on WikiText-2 and HellaSwag at tested scales
 
-- Paper: `paper/mcap.pdf` (arXiv link forthcoming)
+- Paper: [arXiv:2604.21026](https://arxiv.org/abs/2604.21026)
 - Code:  https://github.com/genovationtech/nve
 
 ## Overview
@@ -109,7 +109,6 @@ evidence/                 Dated run captures (2026-04-12 → 2026-04-18):
                           Modal runner scripts, raw JSON logs, figures
 tests/, examples/         Integration tests and minimal runnable examples
 docs/                     Architecture, quantization, streaming-profiler notes
-paper/                    LaTeX source, figures, compiled PDF
 ```
 
 Hugging Face access tokens are read from the `HF_TOKEN` environment variable;
@@ -179,8 +178,8 @@ out = engine.infer("What is the integral of sin(x)?")
 ## Status
 
 Experimental research software. APIs, configuration, and on-disk formats may
-change without notice. See `docs/` and `paper/` for design notes and
-measurements.
+change without notice. See `docs/` and the [paper](https://arxiv.org/abs/2604.21026)
+for design notes and measurements.
 
 ## Contributing
 
